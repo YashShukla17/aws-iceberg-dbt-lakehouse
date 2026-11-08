@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: silver_recipes
+    database: awsdatacatalog
+    schema: silver_recipes # The Glue database namespace you created in PySpark
+    tables:
+      - name: silver_recipes
+        description: "The normalized base recipes table with arrays removed"
+      - name: recipes_ingredients
+        description: "The 1-to-many bridge table for ingredients"
+      - name: recipes_instructions
+        description: "The 1-to-many bridge table for instructions"
+  - name: bronze_recipes
+    database: awsdatacatalog
+    schema: bronze_recipes
+    tables:
+      - name: recipes_unpacked_silver
+        description: "raw dataset"

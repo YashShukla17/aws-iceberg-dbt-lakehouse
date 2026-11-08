@@ -1,0 +1,127 @@
+version: 2
+
+models:
+
+  - name: stg_recipes_ingredients
+    description: ""
+    columns:
+      - name: id
+        data_type: string
+        description: ""
+        data_tests:
+          - unique
+          - not_null
+
+      - name: title
+        data_type: string
+        description: ""
+
+      - name: ingredients
+        data_type: string
+        description: ""
+
+  - name: stg_recipes_instructions
+    description: ""
+    columns:
+      - name: id
+        data_type: string
+        description: ""
+        data_tests:
+          - unique
+          - not_null
+
+      - name: title
+        data_type: string
+        description: ""
+
+      - name: instruction
+        data_type: string
+        description: ""
+
+  - name: stg_recipes_unpacked
+    description: ""
+    columns:
+      - name: url
+        data_type: string
+        description: ""
+
+      - name: cuisine
+        data_type: string
+        description: ""
+
+      - name: cook_time
+        data_type: double
+        description: ""
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: '>=0'
+
+      - name: description
+        data_type: string
+        description: ""
+
+      - name: calories
+        data_type: string
+        description: ""
+
+      - name: carbohydratecontent
+        data_type: string
+        description: ""
+
+      - name: cholesterolcontent
+        data_type: string
+        description: ""
+
+      - name: fatcontent
+        data_type: string
+        description: ""
+
+      - name: fibercontent
+        data_type: string
+        description: ""
+
+      - name: proteincontent
+        data_type: string
+        description: ""
+
+      - name: saturatedfatcontent
+        data_type: string
+        description: ""
+
+      - name: sodiumcontent
+        data_type: string
+        description: ""
+
+      - name: sugarcontent
+        data_type: string
+        description: ""
+
+      - name: unsaturatedfatcontent
+        data_type: string
+        description: ""
+
+      - name: prep_time
+        data_type: double
+        description: ""
+
+      - name: rating
+        data_type: double
+        description: ""
+
+      - name: serves
+        data_type: string
+        description: ""
+
+      - name: title
+        data_type: string
+        description: ""
+
+      - name: total_time
+        data_type: double
+        description: ""
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: 'cook_time + prep_time = total_time'
+              config:
+                severity: warn
+                where: 'total_time >=0'

@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: mart_cuisine_stats
+    description: ""
+    columns:
+      - name: cuisine
+        data_type: string
+        description: ""
+
+      - name: total_recipes
+        data_type: bigint
+        description: ""
+
+      - name: average_rating
+        data_type: double
+        description: ""
+
+      - name: avg_calories
+        data_type: double
+        description: ""
+
+      - name: avg_total_time_mins
+        data_type: double
+        description: ""
